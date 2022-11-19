@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="viewmodel" type="com.example.databinding.SimpleViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextviewStyle"
+            android:text="@string/next_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding"
+            android:layout_marginEnd="@dimen/margin_padding"
+            android:background="@drawable/border_color"
+            android:inputType="textPersonName"
+            android:text="@{Long.toString(viewmodel.nextNumber)}"
+            style="@style/TextviewStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_next"
+            android:autofillHints="" />
+
+        <TextView
+            android:id="@+id/tv_fibonacci"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextviewStyle"
+            android:text="@string/fibonacci"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_next" />
+
+        <EditText
+            android:id="@+id/et_fibonacci"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin_padding"
+            android:layout_marginEnd="@dimen/margin_padding"
+            android:autofillHints=""
+            android:background="@drawable/border_color"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:lines="16"
+            android:text="@{viewmodel.fibonacci}"
+            style="@style/TextviewStyle"
+            app:layout_constraintBottom_toTopOf="@+id/bt_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fibonacci"
+            tools:ignore="LabelFor" />
+
+        <Button
+            android:id="@+id/bt_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding"
+            android:paddingVertical="@dimen/padding_vertical"
+            android:layout_marginStart="@dimen/margin_padding"
+            android:layout_marginEnd="@dimen/margin_padding"
+            android:layout_marginBottom="@dimen/margin_padding"
+            android:text="@string/next"
+            android:onClick="@{() -> viewmodel.onResult()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
